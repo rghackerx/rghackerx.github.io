@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linux Terminal Simulator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="terminal-container">
+            <div class="terminal" id="terminal" onclick="focusTerminal()">
+                <div class="header-container">
+                    <div class="header">RgHackerX</div>
+                </div>
+                <div class="prompt-container">
+                    <div class="prompt">rghacker@website:~$ <span id="command-line" contenteditable="true" onkeydown="handleCommand(event)"></span></div>
+                </div>
+                <div>
+                    <div class="note">Note: Try entering 'help'</div>
+                </div>
+                <div class="output" id="output"></div>
+                <br>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
