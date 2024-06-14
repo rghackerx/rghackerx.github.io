@@ -1,1 +1,77 @@
-<H1>Heyaa!!</H1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terminal Emulator</title>
+    <style>
+        body {
+            background-color: black;
+            color: green;
+            font-family: monospace;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        #terminal {
+            width: 80%;
+            height: 70%;
+            background-color: #111;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow-y: auto;
+        }
+        .input-line {
+            display: flex;
+        }
+        .input-line span {
+            margin-right: 5px;
+        }
+        #input {
+            background: none;
+            border: none;
+            color: green;
+            outline: none;
+            flex-grow: 1;
+        }
+        .output {
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <div id="terminal">
+        <div class="output">Welcome to the terminal emulator. Type "info" to get your information.</div>
+        <div class="input-line">
+            <span>$</span>
+            <input type="text" id="input" autofocus>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('input').addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                const input = document.getElementById('input').value.trim();
+                const outputDiv = document.createElement('div');
+                outputDiv.className = 'output';
+                
+                if (input === 'info') {
+                    outputDiv.textContent = 'Name: John Doe\nEmail: john.doe@example.com\nLocation: Earth';
+                } else {
+                    outputDiv.textContent = `Command not found: ${input}`;
+                }
+                
+                const terminal = document.getElementById('terminal');
+                terminal.insertBefore(outputDiv, terminal.querySelector('.input-line'));
+
+                document.getElementById('input').value = '';
+                terminal.scrollTop = terminal.scrollHeight;
+            }
+        });
+    </script>
+</body>
+</html>
